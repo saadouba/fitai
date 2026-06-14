@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  background-color: #0a0a0a;
+  color: #ffffff;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+}
+
+.btn-primary {
+  @apply bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-200;
+}
+
+.btn-secondary {
+  @apply bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded transition duration-200;
+}
+
+.input-field {
+  @apply bg-gray-900 border border-gray-700 text-white rounded p-2 focus:outline-none focus:border-blue-500;
+}
