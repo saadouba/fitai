@@ -4,7 +4,6 @@ import { supabase } from '../supabaseClient';
 import axios from 'axios';
 import { ChevronLeft, Save, Loader2 } from 'lucide-react';
 import { ThemeContext } from '../context/ThemeContext';
-import { AuthContext } from '../context/AuthContext';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
@@ -20,15 +19,13 @@ const GeneratePlan = () => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
   const { isDark } = useContext(ThemeContext);
-  const { isGuest } = useContext(AuthContext);
 
-  const bgColor = isDark ? 'bg-[#0a0a0a]' : 'bg-[#f5f1ed]';
-  const cardBg = isDark ? 'glass-card' : 'bg-white/80 backdrop-blur-sm border border-gray-200';
-  const inputBg = isDark ? 'bg-gray-900 border-gray-700' : 'bg-gray-50 border-gray-300';
+  const bgColor = isDark ? 'bg-[#0a0a0a]' : 'bg-[#faf8f3]';
+  const cardBg = isDark ? 'glass-card' : 'bg-white/60 backdrop-blur-sm border border-amber-200/50';
+  const inputBg = isDark ? 'bg-gray-900 border-gray-700' : 'bg-amber-50 border-amber-300';
   const textColor = isDark ? 'text-white' : 'text-gray-900';
-  const textMuted = isDark ? 'text-gray-400' : 'text-gray-600';
-  const buttonBg = isDark ? 'bg-blue-600 hover:bg-blue-700' : 'bg-teal-600 hover:bg-teal-700';
-  const buttonSecondary = isDark ? 'bg-gray-800 hover:bg-gray-700' : 'bg-white hover:bg-gray-50';
+  const textMuted = isDark ? 'text-gray-400' : 'text-amber-900/70';
+  const buttonBg = isDark ? 'bg-blue-600 hover:bg-blue-700' : 'bg-amber-700 hover:bg-amber-800';
 
   useEffect(() => {
     const checkUser = async () => {
@@ -89,14 +86,6 @@ const GeneratePlan = () => {
       </button>
 
       <h1 className={`text-3xl font-bold mb-8 ${textColor}`}>Generate Workout Plan</h1>
-
-      {isGuest && (
-        <div className={`mb-6 p-4 rounded ${isDark ? 'bg-yellow-900/20 border-yellow-800' : 'bg-yellow-50 border-yellow-200'} border`}>
-          <p className={`text-sm ${isDark ? 'text-yellow-300' : 'text-yellow-700'}`}>
-            💡 You're in guest mode. You can generate plans, but to save them you'll need to create an account.
-          </p>
-        </div>
-      )}
 
       <div className="grid md:grid-cols-3 gap-8">
         <div className="md:col-span-1">
@@ -163,23 +152,21 @@ const GeneratePlan = () => {
             <div className={`${cardBg} p-8 rounded-lg animate-in fade-in slide-in-from-bottom-4 duration-500 transition-colors duration-300`}>
               <div className="flex justify-between items-center mb-6">
                 <h2 className={`text-2xl font-bold ${textColor}`}>Your Custom Plan</h2>
-                {!isGuest && (
-                  <button
-                    onClick={handleSave}
-                    className={`bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded flex items-center gap-2 transition`}
-                  >
-                    <Save size={18} /> Save Plan
-                  </button>
-                )}
+                <button
+                  onClick={handleSave}
+                  className={`bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded flex items-center gap-2 transition`}
+                >
+                  <Save size={18} /> Save Plan
+                </button>
               </div>
               <div className={`prose prose-invert max-w-none whitespace-pre-wrap ${textMuted} leading-relaxed`}>
                 {plan}
               </div>
             </div>
           ) : (
-            <div className={`${cardBg} p-12 border-dashed border-2 ${isDark ? 'border-gray-800' : 'border-gray-300'} flex flex-col items-center justify-center text-center h-full rounded-lg transition-colors duration-300`}>
-              <div className={`w-16 h-16 ${isDark ? 'bg-gray-900' : 'bg-gray-100'} rounded-full flex items-center justify-center mb-4`}>
-                <Loader2 className={loading ? "animate-spin text-blue-500" : `${isDark ? 'text-gray-700' : 'text-gray-400'}`} size={32} />
+            <div className={`${cardBg} p-12 border-dashed border-2 ${isDark ? 'border-gray-800' : 'border-amber-300/50'} flex flex-col items-center justify-center text-center h-full rounded-lg transition-colors duration-300`}>
+              <div className={`w-16 h-16 ${isDark ? 'bg-gray-900' : 'bg-amber-100'} rounded-full flex items-center justify-center mb-4`}>
+                <Loader2 className={loading ? "animate-spin text-blue-500" : `${isDark ? 'text-gray-700' : 'text-amber-300'}`} size={32} />
               </div>
               <p className={textMuted}>
                 {loading ? "Our AI is crafting your perfect workout plan..." : "Fill out the form and click generate to see your custom workout plan here."}

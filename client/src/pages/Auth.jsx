@@ -13,12 +13,12 @@ const Auth = () => {
   const navigate = useNavigate();
   const { isDark } = useContext(ThemeContext);
 
-  const bgColor = isDark ? 'bg-[#0a0a0a]' : 'bg-[#f5f1ed]';
-  const cardBg = isDark ? 'glass-card' : 'bg-white/80 backdrop-blur-sm border border-gray-200';
-  const inputBg = isDark ? 'bg-gray-900 border-gray-700' : 'bg-gray-50 border-gray-300';
+  const bgColor = isDark ? 'bg-[#0a0a0a]' : 'bg-[#faf8f3]';
+  const cardBg = isDark ? 'glass-card' : 'bg-white/60 backdrop-blur-sm border border-amber-200/50';
+  const inputBg = isDark ? 'bg-gray-900 border-gray-700' : 'bg-amber-50 border-amber-300';
   const textColor = isDark ? 'text-white' : 'text-gray-900';
-  const textMuted = isDark ? 'text-gray-400' : 'text-gray-600';
-  const buttonBg = isDark ? 'bg-blue-600 hover:bg-blue-700' : 'bg-teal-600 hover:bg-teal-700';
+  const textMuted = isDark ? 'text-gray-400' : 'text-amber-900/70';
+  const buttonBg = isDark ? 'bg-blue-600 hover:bg-blue-700' : 'bg-amber-700 hover:bg-amber-800';
 
   const handleAuth = async (e) => {
     e.preventDefault();
@@ -46,7 +46,7 @@ const Auth = () => {
     <div className={`flex items-center justify-center min-h-screen px-4 ${bgColor} transition-colors duration-300`}>
       <div className={`${cardBg} p-8 w-full max-w-md rounded-lg transition-colors duration-300`}>
         <div className="flex items-center justify-center gap-2 mb-8">
-          <Dumbbell className={isDark ? 'text-blue-500' : 'text-teal-600'} size={32} />
+          <Dumbbell className={isDark ? 'text-blue-500' : 'text-amber-700'} size={32} />
           <h2 className={`text-3xl font-bold ${textColor}`}>FitAI</h2>
         </div>
 
@@ -87,7 +87,7 @@ const Auth = () => {
           {isLogin ? "Don't have an account?" : "Already have an account?"}{' '}
           <button
             onClick={() => setIsLogin(!isLogin)}
-            className={`${isDark ? 'text-blue-500' : 'text-teal-600'} hover:underline`}
+            className={`${isDark ? 'text-blue-500' : 'text-amber-700'} hover:underline font-medium`}
           >
             {isLogin ? 'Sign Up' : 'Login'}
           </button>

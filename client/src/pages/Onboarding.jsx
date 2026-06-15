@@ -12,12 +12,12 @@ const Onboarding = () => {
   const navigate = useNavigate();
   const { isDark } = useContext(ThemeContext);
 
-  const bgColor = isDark ? 'bg-[#0a0a0a]' : 'bg-[#f5f1ed]';
-  const cardBg = isDark ? 'glass-card' : 'bg-white/80 backdrop-blur-sm border border-gray-200';
-  const inputBg = isDark ? 'bg-gray-900 border-gray-700' : 'bg-gray-50 border-gray-300';
+  const bgColor = isDark ? 'bg-[#0a0a0a]' : 'bg-[#faf8f3]';
+  const cardBg = isDark ? 'glass-card' : 'bg-white/60 backdrop-blur-sm border border-amber-200/50';
+  const inputBg = isDark ? 'bg-gray-900 border-gray-700' : 'bg-amber-50 border-amber-300';
   const textColor = isDark ? 'text-white' : 'text-gray-900';
-  const textMuted = isDark ? 'text-gray-400' : 'text-gray-600';
-  const buttonBg = isDark ? 'bg-blue-600 hover:bg-blue-700' : 'bg-teal-600 hover:bg-teal-700';
+  const textMuted = isDark ? 'text-gray-400' : 'text-amber-900/70';
+  const buttonBg = isDark ? 'bg-blue-600 hover:bg-blue-700' : 'bg-amber-700 hover:bg-amber-800';
 
   const handleSubmit = (e) => {
     e.preventDefault();

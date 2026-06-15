@@ -16,11 +16,11 @@ const Dashboard = () => {
   const { isDark } = useContext(ThemeContext);
   const { logout } = useContext(AuthContext);
 
-  const bgColor = isDark ? 'bg-[#0a0a0a]' : 'bg-[#f5f1ed]';
-  const cardBg = isDark ? 'glass-card' : 'bg-white/80 backdrop-blur-sm border border-gray-200';
+  const bgColor = isDark ? 'bg-[#0a0a0a]' : 'bg-[#faf8f3]';
+  const cardBg = isDark ? 'glass-card' : 'bg-white/60 backdrop-blur-sm border border-amber-200/50';
   const textColor = isDark ? 'text-white' : 'text-gray-900';
-  const textMuted = isDark ? 'text-gray-400' : 'text-gray-600';
-  const buttonBg = isDark ? 'bg-blue-600 hover:bg-blue-700' : 'bg-teal-600 hover:bg-teal-700';
+  const textMuted = isDark ? 'text-gray-400' : 'text-amber-900/70';
+  const buttonBg = isDark ? 'bg-blue-600 hover:bg-blue-700' : 'bg-amber-700 hover:bg-amber-800';
 
   useEffect(() => {
     const checkUser = async () => {
@@ -58,7 +58,7 @@ const Dashboard = () => {
   );
 
   return (
-    <div className={`max-w-6xl mx-auto px-6 py-12 ${bgColor} transition-colors duration-300`}>
+    <div className={`max-w-6xl mx-auto px-6 py-12 ${bgColor} transition-colors duration-300 min-h-screen`}>
       <div className="flex justify-between items-center mb-12">
         <div>
           <h1 className={`text-3xl font-bold ${textColor}`}>Welcome, {user?.email?.split('@')[0]}!</h1>
@@ -68,7 +68,7 @@ const Dashboard = () => {
           <Link to="/generate" className={`${buttonBg} text-white flex items-center gap-2 px-6 py-2 rounded transition duration-200`}>
             <Plus size={20} /> Generate New Plan
           </Link>
-          <button onClick={handleLogout} className={`${isDark ? 'bg-gray-800 hover:bg-gray-700 border-gray-700' : 'bg-white hover:bg-gray-50 border-gray-300'} border text-white flex items-center gap-2 px-6 py-2 rounded transition duration-200`}>
+          <button onClick={handleLogout} className={`${isDark ? 'bg-gray-800 hover:bg-gray-700 border-gray-700' : 'bg-white hover:bg-amber-50 border-amber-300'} border text-white flex items-center gap-2 px-6 py-2 rounded transition duration-200`}>
             <LogOut size={20} /> Logout
           </button>
         </div>
@@ -78,9 +78,9 @@ const Dashboard = () => {
 
       {plans.length === 0 ? (
         <div className={`${cardBg} p-12 text-center rounded-lg transition-colors duration-300`}>
-          <Dumbbell className={`w-16 h-16 ${isDark ? 'text-gray-700' : 'text-gray-400'} mx-auto mb-4`} />
+          <Dumbbell className={`w-16 h-16 ${isDark ? 'text-gray-700' : 'text-amber-200'} mx-auto mb-4`} />
           <p className={`${textMuted} text-lg mb-6`}>You haven't generated any plans yet.</p>
-          <Link to="/generate" className={`${isDark ? 'text-blue-500' : 'text-teal-600'} hover:underline`}>
+          <Link to="/generate" className={`${isDark ? 'text-blue-500' : 'text-amber-700'} hover:underline font-medium`}>
             Create your first AI workout plan →
           </Link>
         </div>
@@ -89,19 +89,19 @@ const Dashboard = () => {
           {plans.map((plan) => (
             <div key={plan.id} className={`${cardBg} p-6 flex flex-col rounded-lg transition-colors duration-300`}>
               <div className="flex items-center gap-2 mb-4">
-                <Calendar className={isDark ? 'text-blue-500' : 'text-teal-600'} size={20} />
+                <Calendar className={isDark ? 'text-blue-500' : 'text-amber-700'} size={20} />
                 <h3 className={`text-xl font-bold truncate ${textColor}`}>{plan.plan_name}</h3>
               </div>
               <p className={`${textMuted} text-sm mb-4 line-clamp-3`}>
                 {plan.plan_content}
               </p>
-              <div className={`mt-auto pt-4 border-t ${isDark ? 'border-gray-800' : 'border-gray-200'} flex justify-between items-center transition-colors duration-300`}>
+              <div className={`mt-auto pt-4 border-t ${isDark ? 'border-gray-800' : 'border-amber-200/50'} flex justify-between items-center transition-colors duration-300`}>
                 <span className={`text-xs ${textMuted}`}>
                   {new Date(plan.created_at).toLocaleDateString()}
                 </span>
                 <button
                   onClick={() => alert('Plan details coming soon!')}
-                  className={`${isDark ? 'text-blue-500' : 'text-teal-600'} text-sm font-medium hover:underline`}
+                  className={`${isDark ? 'text-blue-500' : 'text-amber-700'} text-sm font-medium hover:underline`}
                 >
                   View Full Plan
                 </button>
